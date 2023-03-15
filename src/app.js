@@ -3,12 +3,13 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import { debounce } from 'min-dash';
 
-import { BpmnPropertiesPanelModule, BpmnPropertiesProviderModule, CamundaPlatformPropertiesProviderModule } from 'bpmn-js-properties-panel';
+import { BpmnPropertiesPanelModule, BpmnPropertiesProviderModule, CamundaPlatformPropertiesProviderModule, ZeebePropertiesProviderModule } from 'bpmn-js-properties-panel';
 
 import diagramXML from '../resources/newDiagram.bpmn';
 
 import CamundaBpmnModdle from 'camunda-bpmn-moddle/resources/camunda.json'
 
+import ZeebeBpmnModdle from 'zeebe-bpmn-moddle/resources/zeebe.json'
 
 var container = $('#js-drop-zone');
 
@@ -22,10 +23,12 @@ var bpmnModeler = new BpmnModeler({
   additionalModules: [
     BpmnPropertiesPanelModule,
     BpmnPropertiesProviderModule,
-    CamundaPlatformPropertiesProviderModule
+    //CamundaPlatformPropertiesProviderModule,
+    ZeebePropertiesProviderModule
   ],
   moddleExtensions: {
-    camunda: CamundaBpmnModdle
+    //camunda: CamundaBpmnModdle,
+    zeebe: ZeebeBpmnModdle
   }
 });
 container.removeClass('with-diagram');
